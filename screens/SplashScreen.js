@@ -1,33 +1,41 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
-const SplashScreen = () => {
+export default function SplashScreen({ navigation }) {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigation.replace('Login'); // navega para a tela de Login e remove a Splash da pilha
+        }, 2000); // 2 segundos
+
+        return () => clearTimeout(timer); // limpa o timer se a tela for desmontada
+    }, []);
+
     return (
         <View style={styles.container}>
-            <Image source={require('../assets/Logo.png')} style={styles.logo} />
+            <Image
+                source={require('../assets/Logo.png')} // sua imagem central
+                style={styles.logo}
+            />
             <Text style={styles.title}>HEIMDALL</Text>
         </View>
     );
-};
-
-export default SplashScreen;
+}
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#152016',
-        alignItems: 'center',
         justifyContent: 'center',
+        alignItems: 'center',
     },
     logo: {
-        width: 250,
-        height: 250,
-        resizeMode: 'contain',
-        marginBottom: 8,
+        width: 150,
+        height: 150,
+        marginBottom: 20,
     },
     title: {
-        color: '#fff',
         fontSize: 32,
+        color: '#fff',
         fontWeight: 'bold',
     },
 });
