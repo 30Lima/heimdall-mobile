@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
     View,
     Text,
@@ -13,9 +15,28 @@ export default function LoginScreen({ navigation }) {
     const [username, setUsername] = useState('');
     const [senha, setSenha] = useState('');
 
-    const handleLogin = () => {
-        console.log('Username:', username, 'Senha:', senha);
-        navigation.navigate('Home');
+    useEffect(() => {
+        const carregarUsername = async () => {
+            try {
+                const savedUsername = await AsyncStorage.getItem('username');
+                if (savedUsername) {
+                    setUsername(savedUsername);
+                }
+            } catch (error) {
+                console.log('Erro ao carregar username:', error);
+            }
+        };
+        carregarUsername();
+    }, []);
+
+    const handleLogin = async () => {
+        try {
+            await AsyncStorage.setItem('username', username);
+            console.log('Username:', username, 'Senha:', senha);
+            navigation.navigate('Home');
+        } catch (error) {
+            console.log('Erro ao salvar username:', error);
+        }
     };
 
     return (

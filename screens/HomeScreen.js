@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, ScrollView } from 'react-native';
+import { DrawerActions } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { useState } from 'react';
 
@@ -29,7 +30,7 @@ export default function DashboardScreen({ navigation }) {
     const vagas = zonas[zonaSelecionada];
 
     const openMenu = () => {
-        navigation.openDrawer();
+        navigation.dispatch(DrawerActions.openDrawer());
     };
 
     const renderVaga = ({ item }) => (
@@ -44,15 +45,7 @@ export default function DashboardScreen({ navigation }) {
 
     return (
         <View style={styles.container}>
-            {/* Barra superior */}
-            <View style={styles.header}>
-                <TouchableOpacity onPress={openMenu}>
-                    <Feather name="menu" size={28} color="#fff" />
-                </TouchableOpacity>
-                <Text style={styles.headerTitle}>Dashboard</Text>
-            </View>
 
-            {/* Seletor de Zona */}
             <View style={styles.zonaSelector}>
                 {Object.keys(zonas).map((zona) => (
                     <TouchableOpacity
@@ -75,12 +68,10 @@ export default function DashboardScreen({ navigation }) {
                 ))}
             </View>
 
-            {/* Quadrado maior da zona */}
             <View style={styles.zonaBox}>
                 <Text style={styles.zonaText}>{zonaSelecionada}</Text>
             </View>
 
-            {/* Grade das vagas */}
             <FlatList
                 data={vagas}
                 renderItem={renderVaga}
@@ -90,7 +81,6 @@ export default function DashboardScreen({ navigation }) {
                 scrollEnabled={false}
             />
 
-            {/* Descrição das vagas */}
             <ScrollView style={styles.descricaoContainer}>
                 <Text style={styles.descricaoText}>Mottu</Text>
                 <Text style={styles.descricaoText}>
