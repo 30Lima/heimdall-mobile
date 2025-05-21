@@ -4,16 +4,16 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 export default function SplashScreen({ navigation }) {
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.replace('Login'); // navega para a tela de Login e remove a Splash da pilha
+            navigation.replace('Login');
         }, 2000); // 2 segundos
 
-        return () => clearTimeout(timer); // limpa o timer se a tela for desmontada
+        return () => clearTimeout(timer);
     }, []);
 
     return (
         <View style={styles.container}>
             <Image
-                source={require('../assets/Logo.png')} // sua imagem central
+                source={require('../assets/Logo.png')}
                 style={styles.logo}
             />
             <Text style={styles.title}>HEIMDALL</Text>
