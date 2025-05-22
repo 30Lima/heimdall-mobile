@@ -30,19 +30,19 @@ Este aplicativo simula a interface do sistema e oferece as seguintes funcionalid
 
 ### Passo a passo
 
-1. Clone o repositório:
+1. **Clone o repositório:**
 
 - git clone https://github.com/30Lima/heimdall-mobile.git
 
-2. Acesse o diretório do projeto:
+2. **Acesse o diretório do projeto:**
 
 - cd heimdall-mobile
 
-3. Instale as dependências:
+3. **Instale as dependências:**
 
 - npm install
 
-4. Instale as bibliotecas do projeto:
+4. **Instale as bibliotecas do projeto:**
 
 - npx expo install @react-navigation/native
 - npx expo install react-native-screens react-native-safe-area-context
@@ -54,8 +54,8 @@ Este aplicativo simula a interface do sistema e oferece as seguintes funcionalid
 - npm install @react-navigation/drawer
 - npm install @react-native-async-storage/async-storage
 
-5. Inicie o servidor de desenvolvimento:
+5. **Inicie o servidor de desenvolvimento:**
 
 - npx expo start
 
-6. Escaneie o QR code com o aplicativo Expo Go no seu celular para testar o app.
+6. **Escaneie o QR code com o aplicativo Expo Go no seu celular para testar o app.**
